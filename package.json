@@ -9,13 +9,19 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "expo": "~47.0.8",
+    "expo": "^47.0.8",
     "expo-status-bar": "~1.4.2",
     "react": "18.1.0",
-    "react-native": "0.70.5"
+    "react-native": "0.70.5",
+    "react-native-paper": "^5.1.0",
+    "react-native-safe-area-context": "^4.4.1",
+    "swagger-ui": "^4.15.5"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
+  },
+  "resolutions": {
+    "node-fetch": "2.6.1"
   },
   "private": true
 }
