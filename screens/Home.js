@@ -28,13 +28,13 @@ const Home = (props) => {
           //onPress={() => Alert.alert("Button with adjusted color pressed")}
           // onPress={Alert.alert("You clicked the button")}
         >
-          Log in
+          SIGN UP
         </Button>
       </View>
       <View style={styles.text2}>
         <Text>
           Already have an account?
-          <Button mode="contained">sign up</Button>
+          <Button mode="contained">LOG IN</Button>
         </Text>
       </View>
     </>

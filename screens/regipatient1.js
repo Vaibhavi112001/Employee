@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Image, Model, Alert } from "react-native";
+import { StyleSheet, Text, View, Image, Model, Alert, TouchableOpacity} from "react-native";
 import { TextInput } from "react-native-paper";
 import { Card, Button } from "react-native-paper";
+import { button1 } from '../common/button'
 
 const styles = StyleSheet.create({
   mycard: {
@@ -30,6 +31,44 @@ const CreatePatient = () => {
   const [Pass, setPass] = useState("");
   const [CPass, setCPass] = useState("");
   // const [Model, setModel] = useState(false);
+  const[errormsg, setErrormsg]= useState("");
+  const Sendtobackend= ()=> {
+    // console.log(Name,Email,PhNo,Pass,CPass);
+    // if(Name==''||
+    // Email==''||
+    // PhNo==''||
+    // Pass==''||
+    // CPass==''){
+    //   setErrormsg('All fields are required');
+    //   return;
+    // }
+    // else{
+    //   if(Pass!=CPass){
+    //     setErrormsg("Passwords Do Not Match");
+    //     return;
+    //   }
+    //   else{
+        fetch('http://172.20.10.10:19000/Psignup',{
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body:JSON.stringify({
+            "Name":Name,
+            "Email":Email,
+            "PhNo":PhNo,
+            "Pass":Pass,
+            "CPass":CPass
+          })
+        })
+        .then(res=>res.json())
+        .then(
+          data=> {
+            console.log(data);
+          })
+      // }
+    }
+  // }
 
   return (
     <>
@@ -78,21 +117,21 @@ const CreatePatient = () => {
           mode="outlined"
         />
         <TextInput
-          label="Confirm Passord"
+          label="Confirm Password"
           value={CPass}
           onChangeText={(text) => setCPass(text)}
           mode="outlined"
         />
       </View>
-      <View style={styles.button}>
-        <Button
-          mode="contained"
-          //onPress={() => console.log("Pressed")}
-          onPress={() => Alert.alert("You clicked the button")}
-        >
-          sign up
-        </Button>
-      </View>
+      <TouchableOpacity
+      onPress={()=>{
+        Sendtobackend();
+      }} 
+      >
+      <Text style={button1}
+        
+        >sign up</Text>
+</TouchableOpacity>
     </>
   );
 };
